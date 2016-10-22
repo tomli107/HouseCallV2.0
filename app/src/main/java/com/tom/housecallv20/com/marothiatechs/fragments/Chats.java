@@ -5,28 +5,27 @@ package com.tom.housecallv20.com.marothiatechs.fragments;
  */
 //package com.marothiatechs.fragments;
 
-        import java.util.ArrayList;
-        import java.util.Random;
-        import android.os.Bundle;
-        import android.support.v4.app.Fragment;
-        import android.support.v7.app.AppCompatActivity;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.View.OnClickListener;
-        import android.view.ViewGroup;
-        import android.widget.EditText;
-        import android.widget.ImageButton;
-        import android.widget.ListView;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ListView;
 
-        import com.tom.housecallv20.com.marothiatechs.fragments.ChatAdapter;
-        import com.tom.housecallv20.com.marothiatechs.fragments.ChatMessage;
-        import com.tom.housecallv20.com.marothiatechs.fragments.CommonMethods;
-        import com.tom.housecallv20.R;
+import com.tom.housecallv20.MainActivity;
+import com.tom.housecallv20.R;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Chats extends Fragment implements OnClickListener {
 
     private EditText msg_edittext;
-    private String user1 = "khushi", user2 = "khushi1";
+    private String user1 = "khushi", user2 = "khushi";// chating with self
     private Random random;
     public static ArrayList<ChatMessage> chatlist;
     public static ChatAdapter chatAdapter;
@@ -39,6 +38,7 @@ public class Chats extends Fragment implements OnClickListener {
         random = new Random();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(
                 "Chats");
+        msg_edittext = (EditText) view.findViewById(R.id.messageEditText);
         msgListView = (ListView) view.findViewById(R.id.msgListView);
         ImageButton sendButton = (ImageButton) view
                 .findViewById(R.id.sendMessageButton);
@@ -70,6 +70,8 @@ public class Chats extends Fragment implements OnClickListener {
             msg_edittext.setText("");
             chatAdapter.add(chatMessage);
             chatAdapter.notifyDataSetChanged();
+            MainActivity activity = ((MainActivity) getActivity());
+            activity.getmService().xmpp.sendMessage(chatMessage);
         }
     }
 
