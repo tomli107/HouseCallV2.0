@@ -3,12 +3,9 @@ package com.tom.housecallv20.com.marothiatechs.fragments;
 /**
  * Created by Tom on 10/22/2016.
  */
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +13,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.tom.housecallv20.R;
+
+import java.util.ArrayList;
 
 public class ChatAdapter extends BaseAdapter {
 
-    private static LayoutInflater inflater = null;
+    private static LayoutInflater inflater = null; //this is the inflator
     ArrayList<ChatMessage> chatMessageList;
 
     public ChatAdapter(Activity activity, ArrayList<ChatMessage> list) {
