@@ -81,14 +81,11 @@ public class MainActivity extends AppCompatActivity implements
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         // For each of the sections in the app, add a tab to the action bar.
-        for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-            tabLayout.addTab(tabLayout.newTab().
-                    setText(mSectionsPagerAdapter.getPageTitle(i)));
-            tabLayout.addOnTabSelectedListener(this);
-//            actionBar.addTab(actionBar.newTab()
-//                    .setText(mSectionsPagerAdapter.getPageTitle(i))
-//                    .setTabListener(this));
-        }
+//        for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
+//            tabLayout.addTab(tabLayout.newTab().
+//                    setText(mSectionsPagerAdapter.getPageTitle(i)));
+//            tabLayout.addOnTabSelectedListener(this);
+//        }
     }
 
     @Override
