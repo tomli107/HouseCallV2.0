@@ -74,7 +74,7 @@ public class Chats extends Fragment implements OnClickListener {
             chatAdapter.add(chatMessage);
             chatAdapter.notifyDataSetChanged();
             MainActivity activity = ((MainActivity) getActivity());
-//            activity.getmService().xmpp.sendMessage(chatMessage);
+///            activity.getmService().xmpp.sendMessage(chatMessage);
         }
     }
 
