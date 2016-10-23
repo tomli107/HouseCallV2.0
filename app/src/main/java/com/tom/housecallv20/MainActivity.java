@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tom.housecallv20.com.marothiatechs.fragments.Chats;
+import com.tom.housecallv20.mchat.MyService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private MyService mService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public MyService getmService() {
+        return mService;
     }
 
     /**
@@ -161,5 +167,6 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         }
+
     }
 }

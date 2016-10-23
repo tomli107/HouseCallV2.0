@@ -44,6 +44,7 @@ public class Chats extends Fragment implements OnClickListener {
                 .findViewById(R.id.sendMessageButton);
         sendButton.setOnClickListener(this);
 
+
         // ----Set autoscroll of listview when a new message arrives----//
         msgListView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
         msgListView.setStackFromBottom(true);
@@ -59,6 +60,8 @@ public class Chats extends Fragment implements OnClickListener {
     }
 
     public void sendTextMessage(View v) {
+
+        msg_edittext = (EditText) this.getView().findViewById(R.id.messageEditText);
         String message = msg_edittext.getEditableText().toString();
         if (!message.equalsIgnoreCase("")) {
             final ChatMessage chatMessage = new ChatMessage(user1, user2,
@@ -71,7 +74,7 @@ public class Chats extends Fragment implements OnClickListener {
             chatAdapter.add(chatMessage);
             chatAdapter.notifyDataSetChanged();
             MainActivity activity = ((MainActivity) getActivity());
-            activity.getmService().xmpp.sendMessage(chatMessage);
+//            activity.getmService().xmpp.sendMessage(chatMessage);
         }
     }
 
