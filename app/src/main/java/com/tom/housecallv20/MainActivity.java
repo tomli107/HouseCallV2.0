@@ -1,8 +1,6 @@
 package com.tom.housecallv20;
 
 import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -21,8 +19,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tom.housecallv20.com.marothiatechs.fragments.Chats;
-import com.tom.housecallv20.mchat.LocalBinder;
-import com.tom.housecallv20.mchat.MyService;
 
 import java.util.Locale;
 
@@ -33,21 +29,20 @@ public class MainActivity extends AppCompatActivity implements
     private boolean mBounded;
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
-    private MyService mService;
     private final ServiceConnection mConnection = new ServiceConnection() {
 
         @SuppressWarnings("unchecked")
         @Override
         public void onServiceConnected(final ComponentName name,
                                        final IBinder service) {
-            mService = ((LocalBinder<MyService>) service).getService();
+
             mBounded = true;
             Log.d(TAG, "onServiceConnected");
         }
 
         @Override
         public void onServiceDisconnected(final ComponentName name) {
-            mService = null;
+
             mBounded = false;
             Log.d(TAG, "onServiceDisconnected");
         }
@@ -57,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        doBindService();
+
 
         //final ActionBar actionBar = getSupportActionBar();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -130,11 +125,11 @@ public class MainActivity extends AppCompatActivity implements
         public Fragment getItem(int position) {
             if (position == 1) {
                 return new Chats();
-            } else
-                return PlaceholderFragment.newInstance(position + 1);
-        }
+    } else
+            return PlaceholderFragment.newInstance(position + 1);
+}
 
-        @Override
+    @Override
         public int getCount() {
             // Show 3 total pages.
             return 3;
@@ -179,25 +174,9 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        doUnbindService();
-    }
 
-    void doBindService() {
-        bindService(new Intent(this, MyService.class), mConnection,
-                Context.BIND_AUTO_CREATE);
-    }
 
-    void doUnbindService() {
-        if (mConnection != null) {
-            unbindService(mConnection);
-        }
-    }
 
-    public MyService getmService() {
-        return mService;
-    }
+
 
 }
